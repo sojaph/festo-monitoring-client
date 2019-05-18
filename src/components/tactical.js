@@ -27,6 +27,13 @@ const TimeQuery = gql`{
   }`;
 
 class TacticalDashboard extends Component {
+    returnCSS(percentage) {
+      return {
+        width: `${percentage}%`,
+        height: "100%",
+        backgroundColor: "#276e36",
+      }
+    }
     render() {
         const {data: {loading, resourceUsage, KPIs}} = this.props;
         if(loading){
@@ -47,7 +54,7 @@ class TacticalDashboard extends Component {
           exportEnabled: true,
           animationEnabled: true,
           title: {
-            text: "Resource Usage"
+            text: "Resource Utilization"
           },
           data: [{
             type: "pie",
@@ -66,24 +73,36 @@ class TacticalDashboard extends Component {
             <div className = "col-6">
               <CanvasJSChart options={options} />
             </div>
-            <div className = "col-6">
+            <div className = "col-6 text-center">
                 <div className = "row">
-                    <div className = "col-3">
-                        <p>Quality Factor Q</p>
-                        <h3>{Q} %</h3>
+                    <div className = "col-4 text-center">
+                        <p>Quality Factor <b>Q</b></p>
+                        <div className = "myprogress">
+                          <div style = {this.returnCSS(Q)}></div>
+                        </div>
+                        <h4>{Q} %</h4>
                     </div>
-                    <div className = "col-3">
-                        <p>Availability Factor A</p>
-                        <h3>{A} %</h3>
+                    <div className = "col-4 text-center">
+                        <p>Availability Factor <b>A</b></p>
+                        <div className = "myprogress">
+                          <div style = {this.returnCSS(A)}></div>
+                        </div>
+                        <h4>{A} %</h4>
                     </div>
-                    <div className = "col-3">
-                        <p>Performance Factor P</p>
-                        <h3>{P} %</h3>
+                    <div className = "col-4 text-center">
+                        <p>Performance Factor <b>P</b></p>
+                        <div className = "myprogress">
+                          <div style = {this.returnCSS(P)}></div>
+                        </div>
+                        <h4>{P} %</h4>
                     </div>
                 </div>
                 <br/>
                 <br/>
                 <h5>Overall Equipment Effectivness OEE</h5>
+                <div className = "myprogress">
+                  <div style = {this.returnCSS((Q*A*P/10000).toFixed(2))}></div>
+                </div>
                 <h2>{(Q*A*P/10000).toFixed(2)} %</h2>
             </div>
           </div>

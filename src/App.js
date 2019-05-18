@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
-import gql from "graphql-tag";
-import { graphql } from "react-apollo";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navigation from './components/navigation';
 import TacticalDashboard from './components/tactical';
 import Home from './components/home';
-import CanvasJSReact from './canvasjs.react';
-import './App.css';
-let CanvasJS = CanvasJSReact.CanvasJS;
-let CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 class App extends Component {
   render() {

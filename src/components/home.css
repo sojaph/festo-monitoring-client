@@ -1,0 +1,15 @@
+p, h4{
+    color: rgb(4, 44, 155)
+}
+h3{
+    color: rgb(4, 161, 96)
+}
+h4, h2{
+    color: #314396
+}
+.myprogress {
+    position: relative;
+    height: 20px;
+    background-color: #ecf0f1;
+    border: 1px solid #ccc;
+  }
