@@ -3,20 +3,21 @@ import gql from "graphql-tag";
 import { graphql } from "react-apollo";
 import './home.css';
 
-const TimeQuery = gql`{
-  KPIs {
-    ICT,
-    ACT,
-    PPT, 
-    PT{
-        PT,
-        Description
-    }, 
-    FT,
-    FP,
-    RP
-  }
-}`;
+const TimeQuery = gql`
+   {
+      KPIs {
+        RP
+        FP
+        FT
+        PT {
+          pt
+          description
+        }
+        PPT
+        ACT
+        ICT
+      }
+    }`;
 
 class Home extends Component {
   render() {
@@ -84,24 +85,24 @@ class Home extends Component {
         </div>
         <div className="row">
           <div className = "col-2 text-center">
-             <p>Processing Time <b>PT</b> for <b>{KPIs.PT[0].Description}</b></p>
-             <h3>{Math.round(KPIs.PT[0].PT / 60)} min, {Math.round(KPIs.PT[0].PT % 60)} sec</h3>
+             <p>Processing Time <b>PT</b> for <b>{KPIs.PT[0].description}</b></p>
+             <h3>{Math.round(KPIs.PT[0].pt / 60)} min, {Math.round(KPIs.PT[0].pt % 60)} sec</h3>
           </div>
           <div className = "col-2 text-center">
-             <p>Processing Time <b>PT</b> for <b>{KPIs.PT[1].Description}</b></p>
-             <h3>{Math.round(KPIs.PT[1].PT)} [sec]</h3>
-             <br/>
-             <br/>
-          </div>
-          <div className = "col-2 text-center">
-             <p>Processing Time <b>PT</b> for <b>{KPIs.PT[2].Description}</b></p>
-             <h3>{Math.round(KPIs.PT[2].PT)} [sec]</h3>
+             <p>Processing Time <b>PT</b> for <b>{KPIs.PT[1].description}</b></p>
+             <h3>{Math.round(KPIs.PT[1].pt)} [sec]</h3>
              <br/>
              <br/>
           </div>
           <div className = "col-2 text-center">
-             <p>Processing Time <b>PT</b> for <b>{KPIs.PT[3].Description}</b></p>
-             <h3>{Math.round(KPIs.PT[3].PT)} [sec]</h3>
+             <p>Processing Time <b>PT</b> for <b>{KPIs.PT[2].description}</b></p>
+             <h3>{Math.round(KPIs.PT[2].pt)} [sec]</h3>
+             <br/>
+             <br/>
+          </div>
+          <div className = "col-2 text-center">
+             <p>Processing Time <b>PT</b> for <b>{KPIs.PT[3].description}</b></p>
+             <h3>{Math.round(KPIs.PT[3].pt)} [sec]</h3>
              <br/>
              <br/>
           </div>

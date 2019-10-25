@@ -10,8 +10,8 @@ const TimeQuery = gql`{
         ACT,
         PPT, 
         PT{
-            PT,
-            Description
+            pt,
+            description
         }, 
         FT,
         FP,
